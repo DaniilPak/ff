@@ -4,7 +4,7 @@ npm create vue@latest ff
 cd ff
 yarn install
 
-```javascript
+```graphql
 /src
  ├── app/          # App-wide configuration (router, store, styles)
  │   ├── providers/  # App-level providers (Pinia, Vue Router setup)
