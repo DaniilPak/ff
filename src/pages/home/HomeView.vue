@@ -1,5 +1,6 @@
 <template>
   <section class="hero is-primary">
+    <b-progress :value="50" size="is-small" type="is-primary"></b-progress>
     <div class="hero-body">
       <p class="title">Welcome to Vue home</p>
       <button class="button is-light" @click="sayHello">Click Me</button>
@@ -13,7 +14,7 @@
 <script setup lang="ts">
 const sayHello = () => alert('Hello from Bulma!')
 
-import type { ITask } from '@/types'
+import type { ITask } from '@/entities/task/types'
 
 const dummyTasks: ITask[] = [
   {

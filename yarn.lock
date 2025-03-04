@@ -2028,13 +2028,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bulma@npm:^1.0.3":
-  version: 1.0.3
-  resolution: "bulma@npm:1.0.3"
-  checksum: d24b1b44087607674c2dedf1c94507eda9d824cbb4b03fc03aac04850a4390b798d9a7b844a1d095d5b5d71d70c5773f38117e569cc6f3fd66d39357f8667127
-  languageName: node
-  linkType: hard
-
 "bundle-name@npm:^4.1.0":
   version: 4.1.0
   resolution: "bundle-name@npm:4.1.0"
@@ -3196,7 +3189,6 @@ __metadata:
     "@vue/eslint-config-typescript": ^14.4.0
     "@vue/test-utils": ^2.4.6
     "@vue/tsconfig": ^0.7.0
-    bulma: ^1.0.3
     cypress: ^14.0.3
     eslint: ^9.20.1
     eslint-plugin-cypress: ^4.1.0
