@@ -1,17 +1,6 @@
-<template>
-  <section class="hero is-primary">
-    <b-progress :value="50" size="is-small" type="is-primary"></b-progress>
-    <div class="hero-body">
-      <p class="title">Welcome to Vue home</p>
-      <button class="button" @click="sayHello">Exec</button>
-    </div>
-    <div v-for="[key, value] in Object.entries(dummyTasks)" :key="key">
-      <strong>{{ key }}:</strong> {{ value }}
-    </div>
-  </section>
-</template>
-
 <script setup lang="ts">
+import ChatBox from '@/widgets/chat/ChatBox.vue'
+
 const sayHello = () => alert('Hello from Bulma!')
 
 import type { ITask } from '@/entities/task/types'
@@ -59,3 +48,17 @@ const dummyTasks: ITask[] = [
   transition: background-color 0.2s ease-in-out;
 }
 </style>
+
+<template>
+  <section class="hero is-primary">
+    <b-progress :value="50" size="is-small" type="is-primary"></b-progress>
+    <div class="hero-body">
+      <p class="title">Welcome to Vue home</p>
+      <button class="button" @click="sayHello">Exec</button>
+    </div>
+    <div v-for="[key, value] in Object.entries(dummyTasks)" :key="key">
+      <strong>{{ key }}:</strong> {{ value }}
+    </div>
+  </section>
+  <ChatBox />
+</template>
