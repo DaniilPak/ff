@@ -1,14 +1,35 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useChatStore } from '@/entities/chat'
+
+onMounted(() => {
+  console.log('Component mounted! Setting up event listeners...')
+  send('Tell me short very surprsing and impressive fact about human history')
+})
 
 const chatStore = useChatStore()
 const message = ref('')
 
-const send = () => {
-  if (!message.value.trim()) return
-  chatStore.sendMessage(message.value)
-  message.value = ''
+const send: {
+  (msg: string): Promise<void>
+  (event: Event): Promise<void>
+} = async (arg: string | Event) => {
+  let msg: string
+
+  if (arg instanceof Event) {
+    msg = message.value.trim()
+  } else {
+    msg = arg.trim()
+  }
+
+  if (!msg) return
+
+  try {
+    await chatStore.sendMessage(msg) // Ensure fetch completes
+    message.value = ''
+  } catch (error) {
+    console.error('Failed to send message:', error)
+  }
 }
 </script>
 
