@@ -4,7 +4,6 @@ import { useChatStore } from '@/entities/chat'
 
 onMounted(() => {
   console.log('Component mounted! Setting up event listeners...')
-  send('Tell me short very surprsing and impressive fact about human history')
 })
 
 const chatStore = useChatStore()
