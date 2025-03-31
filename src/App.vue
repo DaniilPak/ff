@@ -4,7 +4,7 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
   Except router
-  <a-button type="primary">Click Me</a-button>
+  <a-button type="primary">Click Moi</a-button>
   <header>
     <nav>
       <RouterLink to="/">Home</RouterLink>
