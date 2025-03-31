@@ -58,3 +58,6 @@ yarn install
  ├── vite.config.ts # Vite configuration
 
 ```
+
+corepack enable  
+yarn set version latest

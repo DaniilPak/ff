@@ -33,28 +33,14 @@ const dummyTasks: ITask[] = [
 ]
 </script>
 
-<style>
-.button {
-  background-color: #3688d4;
-  color: white;
-  font-size: 18px;
-  font-weight: 400;
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  width: 130px;
-  text-align: center;
-  transition: background-color 0.2s ease-in-out;
-}
-</style>
+<style></style>
 
 <template>
   <section class="hero is-primary">
     <b-progress :value="50" size="is-small" type="is-primary"></b-progress>
     <div class="hero-body">
       <p class="title">Welcome to Vue home</p>
-      <button class="button" @click="sayHello">Exec</button>
+      <button @click="sayHello">Exec</button>
     </div>
     <div v-for="[key, value] in Object.entries(dummyTasks)" :key="key">
       <strong>{{ key }}:</strong> {{ value }}
