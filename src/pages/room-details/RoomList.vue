@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCounterStore } from '@/app/providers/store/counter'
-import ChatBox from '@/widgets/chat/ChatBox.vue'
+import UsersList from '@/features/users/ui/UsersList.vue'
 
 const counterStore = useCounterStore()
 </script>
@@ -11,5 +11,5 @@ const counterStore = useCounterStore()
     <p>Double: {{ counterStore.doubleCount }}</p>
     <button @click="counterStore.increment">Increment</button>
   </div>
-  <ChatBox />
+  <UsersList />
 </template>
