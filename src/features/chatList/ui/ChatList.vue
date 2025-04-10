@@ -78,7 +78,8 @@ li {
 
 /* Specific for moving items to the top smoothly */
 .fade-move {
-  transform: translateY(-10px); /* Slight move when element moves to the top */
+  /* transform: translateY(-10px); */
+  /* Slight move when element moves to the top */
 }
 </style>
 
