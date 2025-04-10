@@ -3,7 +3,15 @@
     <button @click="shuffle" type="button">shuffle</button>
 
     <TransitionGroup tag="a-list" name="fade">
-      <li v-for="item in items" :key="item.title" class="item">
+      <li
+        v-for="(item, index) in items"
+        :key="item.title"
+        class="item"
+        draggable="true"
+        @dragstart="onDragStart(index)"
+        @dragover.prevent
+        @drop="onDrop(index)"
+      >
         <a-list item-layout="horizontal">
           <ContextWrapper
             :key="item"
@@ -19,7 +27,7 @@
                   <a>{{ item.title }}</a>
                 </template>
                 <template #avatar>
-                  <a-avatar src="https://joeschmoe.io/api/v1/random" />
+                  <a-avatar src="" />
                 </template>
               </a-list-item-meta>
             </a-list-item>
@@ -29,6 +37,74 @@
     </TransitionGroup>
   </section>
 </template>
+
+<script lang="ts" setup>
+import ContextWrapper from '@/features/contextWrapper/ui/ContextWrapper.vue'
+import { shuffle as _shuffle } from 'lodash-es'
+import { ref } from 'vue'
+
+interface DataItem {
+  title: string
+}
+
+const data: DataItem[] = [
+  { title: 'Hey, do you support multiple languages in your app?' },
+  { title: 'What are your data security practices?' },
+  { title: 'Can I integrate this with my existing CRM system?' },
+  { title: 'How do I get started with your API?' },
+  { title: 'Is there any way to customize the dashboard for my team?' },
+  { title: 'What’s the uptime guarantee for your service?' },
+  { title: 'Can I try out the features before committing to a subscription?' },
+  { title: 'Do you offer any discounts for non-profits?' },
+  { title: 'Is there a way to get notifications for new updates?' },
+  { title: 'Can I schedule a demo to understand how it works?' },
+  { title: 'Do you have a dedicated support team for enterprise clients?' },
+  { title: 'What’s the best way to handle large data imports into your system?' },
+]
+
+const items = ref(data)
+let draggedItemIndex: number | null = null
+
+function shuffle() {
+  items.value = _shuffle(items.value)
+}
+
+function remove(item: DataItem) {
+  const index = items.value.indexOf(item)
+  if (index > -1) {
+    items.value.splice(index, 1)
+  }
+}
+
+function moveToTop(item: DataItem) {
+  const index = items.value.indexOf(item)
+  if (index > -1) {
+    items.value.splice(index, 1)
+    items.value.unshift(item)
+  }
+}
+
+function handleRemove(item) {
+  remove(item)
+}
+
+function handleMoveToTheTop(item) {
+  moveToTop(item)
+}
+
+function onDragStart(index: number) {
+  draggedItemIndex = index
+}
+
+function onDrop(index: number) {
+  if (draggedItemIndex !== null && draggedItemIndex !== index) {
+    const movedItem = items.value[draggedItemIndex]
+    items.value.splice(draggedItemIndex, 1)
+    items.value.splice(index, 0, movedItem)
+  }
+  draggedItemIndex = null
+}
+</script>
 
 <style scoped>
 li {
@@ -82,57 +158,3 @@ li {
   /* Slight move when element moves to the top */
 }
 </style>
-
-<script lang="ts" setup>
-import ContextWrapper from '@/features/contextWrapper/ui/ContextWrapper.vue'
-import { shuffle as _shuffle } from 'lodash-es'
-import { ref } from 'vue'
-
-interface DataItem {
-  title: string
-}
-
-const data: DataItem[] = [
-  { title: 'Hey, do you support multiple languages in your app?' },
-  { title: 'What are your data security practices?' },
-  { title: 'Can I integrate this with my existing CRM system?' },
-  { title: 'How do I get started with your API?' },
-  { title: 'Is there any way to customize the dashboard for my team?' },
-  { title: 'What’s the uptime guarantee for your service?' },
-  { title: 'Can I try out the features before committing to a subscription?' },
-  { title: 'Do you offer any discounts for non-profits?' },
-  { title: 'Is there a way to get notifications for new updates?' },
-  { title: 'Can I schedule a demo to understand how it works?' },
-  { title: 'Do you have a dedicated support team for enterprise clients?' },
-  { title: 'What’s the best way to handle large data imports into your system?' },
-]
-
-const items = ref(data)
-
-function shuffle() {
-  items.value = _shuffle(items.value)
-}
-
-function remove(item: DataItem) {
-  const index = items.value.indexOf(item)
-  if (index > -1) {
-    items.value.splice(index, 1)
-  }
-}
-
-function moveToTop(item: DataItem) {
-  const index = items.value.indexOf(item)
-  if (index > -1) {
-    items.value.splice(index, 1)
-    items.value.unshift(item)
-  }
-}
-
-function handleRemove(item) {
-  remove(item)
-}
-
-function handleMoveToTheTop(item) {
-  moveToTop(item)
-}
-</script>
