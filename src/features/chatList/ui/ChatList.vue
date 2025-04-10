@@ -1,7 +1,5 @@
 <template>
   <section style="max-height: 100%; overflow-y: auto">
-    <button @click="shuffle" type="button">shuffle</button>
-
     <TransitionGroup tag="a-list" name="fade">
       <li
         v-for="(item, index) in items"
@@ -40,8 +38,7 @@
 
 <script lang="ts" setup>
 import ContextWrapper from '@/features/contextWrapper/ui/ContextWrapper.vue'
-import { shuffle as _shuffle } from 'lodash-es'
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 interface DataItem {
   title: string
@@ -62,12 +59,13 @@ const data: DataItem[] = [
   { title: 'What’s the best way to handle large data imports into your system?' },
 ]
 
-const items = ref(data)
+const items = ref()
 let draggedItemIndex: number | null = null
 
-function shuffle() {
-  items.value = _shuffle(items.value)
-}
+onMounted(() => {
+  console.log('Mounted')
+  items.value = data
+})
 
 function remove(item: DataItem) {
   const index = items.value.indexOf(item)
