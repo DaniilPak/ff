@@ -5,10 +5,13 @@
     </div>
     <template #overlay>
       <a-menu>
-        <a-menu-item key="1">1st menu item</a-menu-item>
-        <a-menu-item key="2">2nd menu item</a-menu-item>
-        <a-menu-item key="3">3rd menu item</a-menu-item>
+        <a-menu-item key="1" @click="$emit('remove', props.item)">Remove</a-menu-item>
+        <a-menu-item key="2" @click="$emit('totop', props.item)">To the top</a-menu-item>
       </a-menu>
     </template>
   </a-dropdown>
 </template>
+
+<script lang="ts" setup>
+const props = defineProps(['item'])
+</script>

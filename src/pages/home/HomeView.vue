@@ -17,12 +17,6 @@ const secondStyle: CSSProperties = {
 
 <template>
   <section>
-    <a-breadcrumb>
-      <a-breadcrumb-item>Home</a-breadcrumb-item>
-      <a-breadcrumb-item><a href="/roomlist">Application Center</a></a-breadcrumb-item>
-      <a-breadcrumb-item><a href="">Application List</a></a-breadcrumb-item>
-      <a-breadcrumb-item>An Application</a-breadcrumb-item>
-    </a-breadcrumb>
     <a-flex>
       <div :style="{ ...baseStyle }">
         <ChatList />

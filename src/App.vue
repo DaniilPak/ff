@@ -3,8 +3,6 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  Except router
-  <a-button type="primary">Click Moi</a-button>
   <header>
     <nav>
       <RouterLink to="/">Home</RouterLink>
