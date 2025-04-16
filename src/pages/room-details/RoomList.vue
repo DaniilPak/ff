@@ -9,7 +9,7 @@ const counterStore = useCounterStore()
   <div>
     <p>Count: {{ counterStore.count }}</p>
     <p>Double: {{ counterStore.doubleCount }}</p>
-    <button @click="counterStore.increment">Increment</button>
+    <button @click="counterStore.increment">Fuck it</button>
   </div>
   <UsersList />
 </template>
