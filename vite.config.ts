@@ -25,11 +25,6 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 import { execSync } from 'child_process'
 
 const branch = execSync('git rev-parse --abbrev-ref HEAD').toString().trim()
-const allowed = Array.from({ length: 10 }, (_, i) => `rc${i + 1}`)
-
-if (!allowed.includes(branch)) {
-  throw new Error(`❌ Branch '${branch}' is not allowed for build`)
-}
 
 export default defineConfig({
   plugins: [vue(), vueJsx(), vueDevTools()],
@@ -38,8 +33,15 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
-  base: `/${branch}/`,
+  base: '',
   build: {
     outDir: `dist/${branch}`,
+    rollupOptions: {
+      output: {
+        manualChunks: undefined, // 🛑 disables code-splitting
+      },
+    },
+    assetsInlineLimit: Infinity, // 🧙‍♂️ inline images/fonts as base64
+    cssCodeSplit: false, // 👕 bundle all CSS into JS
   },
 })
