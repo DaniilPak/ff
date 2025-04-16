@@ -82,11 +82,11 @@ function moveToTop(item: DataItem) {
   }
 }
 
-function handleRemove(item) {
+function handleRemove(item: DataItem) {
   remove(item)
 }
 
-function handleMoveToTheTop(item) {
+function handleMoveToTheTop(item: DataItem) {
   moveToTop(item)
 }
 
