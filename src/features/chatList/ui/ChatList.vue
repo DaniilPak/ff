@@ -49,14 +49,6 @@ const data: DataItem[] = [
   { title: 'What are your data security practices?' },
   { title: 'Can I integrate this with my existing CRM system?' },
   { title: 'How do I get started with your API?' },
-  { title: 'Is there any way to customize the dashboard for my team?' },
-  { title: 'What’s the uptime guarantee for your service?' },
-  { title: 'Can I try out the features before committing to a subscription?' },
-  { title: 'Do you offer any discounts for non-profits?' },
-  { title: 'Is there a way to get notifications for new updates?' },
-  { title: 'Can I schedule a demo to understand how it works?' },
-  { title: 'Do you have a dedicated support team for enterprise clients?' },
-  { title: 'What’s the best way to handle large data imports into your system?' },
 ]
 
 const items = ref()
